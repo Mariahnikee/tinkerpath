@@ -35,9 +35,12 @@ const config = {
   siblingDiscount: 0.1,
 };
 
-// Demo mode: a stand-in checkout used only when no Paystack key is set and not in production.
 config.paymentsLive = Boolean(config.paystackSecret);
-config.demoPayments = !config.paymentsLive && !isProd;
+// Demo mode: on by default outside production, or forced on with DEMO_MODE=true (e.g. a hosted demo).
+config.demoMode = env.DEMO_MODE === 'true' || (!isProd && env.DEMO_MODE !== 'false');
+config.demoPayments = !config.paymentsLive && config.demoMode;
+// The test inbox at /dev/outbox is only available in demo mode when no email provider is set.
+config.devOutbox = config.demoMode && !config.resendKey;
 
 // Starting prices are HYPOTHESES to validate with parents (see docs/RESEARCH.md), not market facts.
 const PLANS = {

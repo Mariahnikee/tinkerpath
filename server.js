@@ -250,7 +250,7 @@ route('GET', '/payment/callback', async (req, res, { url }) => {
   }
 });
 route('GET', '/dev/outbox', (req, res) => {
-  if (config.isProd) return html(res, 404, pages.notFound());
+  if (!config.devOutbox) return html(res, 404, pages.notFound());
   return html(res, 200, pages.outbox({ emails: q.all('SELECT * FROM outbox ORDER BY id DESC LIMIT 30') }));
 });
 
@@ -290,7 +290,7 @@ route('POST', '/api/signup', async (req, res) => {
   });
   const mail = await sendVerification({ id: parentId, name, email });
   const token = auth.createSession('parent', parentId);
-  json(res, 201, { ok: true, plan: planId, emailSent: mail.ok, devOutbox: mail.via === 'dev-outbox' && !config.isProd }, { 'Set-Cookie': auth.sessionCookie('parent', token) });
+  json(res, 201, { ok: true, plan: planId, emailSent: mail.ok, devOutbox: mail.via === 'dev-outbox' && config.devOutbox }, { 'Set-Cookie': auth.sessionCookie('parent', token) });
 });
 route('POST', '/api/login', async (req, res) => {
   const b = await jsonBody(req); const email = str(b.email, 200).toLowerCase();
@@ -322,7 +322,7 @@ route('POST', '/api/resend-verification', async (req, res) => {
   if (p.email_verified_at) return json(res, 200, { ok: true, already: true });
   if (!auth.rateLimit(`verify:${p.id}`, 3, 36e5)) throw new HttpError(429, 'We’ve sent a few already. Please check your spam folder or try later.');
   const mail = await sendVerification(p);
-  json(res, 200, { ok: mail.ok, devOutbox: mail.via === 'dev-outbox' && !config.isProd });
+  json(res, 200, { ok: mail.ok, devOutbox: mail.via === 'dev-outbox' && config.devOutbox });
 });
 
 // Parent dashboard API
