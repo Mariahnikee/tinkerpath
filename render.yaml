@@ -1,0 +1,13 @@
+# Render Blueprint: free demo hosting. Demo mode (no real payments, emails go to /dev/outbox).
+# The free plan's disk is temporary: demo sign-ups are wiped when the service restarts or redeploys.
+services:
+  - type: web
+    name: tinkerpath
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 22.16.0

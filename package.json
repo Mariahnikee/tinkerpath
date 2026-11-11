@@ -1,0 +1,17 @@
+{
+  "name": "tinkerpath",
+  "version": "0.1.0",
+  "private": true,
+  "description": "TinkerPath: paid tech, coding and AI learning platform for children and teens (ages 7-16).",
+  "main": "server.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server.js",
+    "dev": "node --disable-warning=ExperimentalWarning --watch server.js",
+    "jobs": "node --disable-warning=ExperimentalWarning scripts/run-jobs.js",
+    "test": "node --disable-warning=ExperimentalWarning --test test/"
+  }
+}
