@@ -36,8 +36,8 @@ function layout({ title, description, body, parent, app = false, bodyClass = '',
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(title ? `${title} · ${B}` : `${B} · Tech, coding and AI for ages 7–16`)}</title>
-<meta name="description" content="${esc(description || 'Short, hands-on online lessons in coding, digital skills and AI for children and teens aged 7–16, with a parent dashboard and a supervised AI Lab.')}">
+<title>${esc(title ? `${title} · ${B}` : `${B} · Technology education for ages 7–16`)}</title>
+<meta name="description" content="${esc(description || 'Technology education for ages 7–16: computer skills, coding, AI, creative technology and digital safety in short, hands-on lessons, with a supervised AI Lab and a parent dashboard.')}">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
@@ -66,7 +66,7 @@ function footer() {
   <div class="wrap footer-grid">
     <div>
       <a class="brand" href="/">${LOGO}<span>${B}</span></a>
-      <p class="muted">Tech, coding and AI learning for ages 7–16. Online, structured, and built with parents in mind.</p>
+      <p class="muted">Technology education for ages 7–16: computers, coding, AI, creative technology and digital safety. Understand it. Use it. Create with it.</p>
       <p class="muted small">Contact: <a href="mailto:${esc(config.supportEmail)}">${esc(config.supportEmail)}</a></p>
     </div>
     <div><h3>Learn</h3><ul><li><a href="/programmes">Programmes</a></li><li><a href="/try">Free sample lesson</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/learn/login">Student login</a></li></ul></div>
@@ -140,20 +140,21 @@ const ctaBand = (title = 'Give your child a head start with tech and AI', sub = 
 // ---------- Pages ----------
 function home(ctx) {
   const learn = [
-    ['devices', 'Digital basics', 'How computers, the internet and apps actually work.'],
-    ['code', 'Coding & logic', 'Algorithms, loops and conditions through puzzles, then real code.'],
-    ['build', 'Websites & games', 'Plan games and build real web pages with HTML and CSS.'],
-    ['ai', 'How AI works', 'Train a mini model and see how AI learns from examples.'],
-    ['prompt', 'Prompting & checking AI', 'Write clear prompts and spot when AI gets things wrong.'],
-    ['shield', 'Online safety', 'Privacy, kindness online, and knowing when to ask an adult.'],
+    ['devices', 'Computer Fundamentals', 'How computers, operating systems and the internet work, and how to use everyday digital tools.'],
+    ['code', 'Coding & Programming', 'Step-by-step thinking through puzzles, then real code: HTML, CSS and beyond.'],
+    ['ai', 'Artificial Intelligence', 'How AI learns from examples, how to write good prompts, and how to use AI responsibly.'],
+    ['build', 'Creative Technology', 'Plan games and build websites and other digital projects they can show you.'],
+    ['shield', 'Digital Safety', 'Privacy, cybersecurity basics, kindness online, and knowing when to ask an adult.'],
+    ['check', 'Critical thinking', 'Question, test and check, including what AI tells them. Runs through every area.'],
   ];
   const body = `
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">Online tech &amp; AI classes · ages 7–16</p>
+        <p class="eyebrow">Technology education · ages 7–16</p>
         <h1>Help your child go from <em>using</em> tech to <em>creating</em> with it.</h1>
-        <p class="lead">Short, hands-on lessons in coding, digital skills and AI, organised by age. Learn at home, join a weekly live session, and follow every step in your parent dashboard.</p>
+        <p class="tagline">Understand it. Use it. Create with it.</p>
+        <p class="lead">Computer skills, coding, AI, creative projects and digital safety, in short hands-on lessons organised by age. Your child learns at home; you follow every step in your parent dashboard.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="/start">Find the right path</a>
           <a class="btn btn-ghost btn-lg" href="/try">Try a free lesson</a>
@@ -196,7 +197,7 @@ function home(ctx) {
 
   <section class="section" id="learn">
     <div class="wrap">
-      <div class="section-head"><p class="eyebrow">What they learn</p><h2>Practical skills for a world shaped by technology</h2><p class="lead-sm">Every lesson ends with something your child has done, built or decided, not just read.</p></div>
+      <div class="section-head"><p class="eyebrow">What they learn</p><h2>More than coding: five areas, one connected path</h2><p class="lead-sm">Children learn to understand technology, use it well and create with it. Every lesson ends with something they have done, built or decided, not just read.</p></div>
       <div class="grid-3 feature-grid">${learn.map(([i, t, d], n) => `<article class="feature"><span class="feature-icon fi-${n % 3}">${icon(i)}</span><h3>${t}</h3><p>${d}</p></article>`).join('')}</div>
       <div class="build-head"><h3>Things your child will make</h3><p class="muted">Real activities from the first modules.</p></div>
       <div class="grid-3 build-grid">
@@ -222,7 +223,27 @@ function home(ctx) {
     </div>
   </section>
 
-  <section class="section" id="how">
+  <section class="section" id="experience">
+    <div class="wrap">
+      <div class="section-head"><p class="eyebrow">Two experiences, one goal</p><h2>Built for learners, clear for parents</h2></div>
+      <div class="grid-2">
+        <article class="card who-card who-learner"><span class="feature-icon fi-1">${icon('spark')}</span><h3>For learners</h3><ul class="ticks">
+          <li>Simple login with a learner name and PIN, no email needed</li>
+          <li>One clear “Next up” lesson, so they always know where to start</li>
+          <li>10–15 minute lessons with puzzles, quizzes and projects</li>
+          <li>Instant feedback, badges, and a supervised AI Lab to practise with</li></ul>
+          <a class="text-link" href="/try">Try a lesson <span aria-hidden="true">→</span></a></article>
+        <article class="card who-card who-parent"><span class="feature-icon fi-0">${icon('chart')}</span><h3>For parents</h3><ul class="ticks">
+          <li>A recommended path based on your child’s age, interests and experience</li>
+          <li>Progress, quiz scores, projects and badges in one dashboard</li>
+          <li>Plain-language explanations of what your child is learning and why</li>
+          <li>Every AI Lab message visible to you; live AI stays off unless you turn it on</li></ul>
+          <a class="text-link" href="/start">Get started <span aria-hidden="true">→</span></a></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="how">
     <div class="wrap">
       <div class="section-head"><p class="eyebrow">How it works</p><h2>From sign-up to first lesson in minutes</h2></div>
       <ol class="steps">
@@ -286,7 +307,7 @@ function programmes(ctx) {
   const body = `
   <section class="page-hero"><div class="wrap narrow center">
     <p class="eyebrow">Programmes</p><h1>Three paths, one goal: confident young creators</h1>
-    <p class="lead">Each path has modules of short lessons. Every lesson mixes a quick explanation, an activity and a check for understanding.</p>
+    <p class="lead">Each path covers five learning areas: Computer Fundamentals, Coding &amp; Programming, Artificial Intelligence, Creative Technology and Digital Safety. Every lesson mixes a quick explanation, an activity and a check for understanding.</p>
   </div></section>
   ${Object.values(TRACKS).map((t) => `
   <section class="section track-section band-${t.id}" id="${t.id}"><div class="wrap">
@@ -296,7 +317,7 @@ function programmes(ctx) {
       <p class="lead-sm">${esc(t.summary)}</p>
     </div>
     <div class="grid-2">
-      ${t.modules.map((m, i) => `<article class="card module-card"><p class="eyebrow">Module ${i + 1}</p><h3>${esc(m.title)}</h3><p class="muted">${esc(m.why)}</p>
+      ${t.modules.map((m, i) => `<article class="card module-card"><p class="eyebrow">Module ${i + 1}</p><h3>${esc(m.title)}</h3>${(m.areas || []).length ? `<p class="area-tags">${m.areas.map((a) => `<span class="pill">${esc(a)}</span>`).join('')}</p>` : ''}<p class="muted">${esc(m.why)}</p>
         <ol class="lesson-list">${m.lessons.map((id) => { const l = require('./content').LESSON_MAP[id]; return `<li><span>${esc(l.title)}</span><span class="small muted">${l.minutes} min</span></li>`; }).join('')}</ol></article>`).join('')}
     </div>
     <div class="card outcomes"><h3>By the end of this path, your child should be able to:</h3><ul class="ticks cols-2">${t.outcomes.map((o) => `<li>${esc(o)}</li>`).join('')}</ul></div>

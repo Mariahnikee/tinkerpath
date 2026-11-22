@@ -560,3 +560,12 @@ body.student { background: #fdf8ef; }
 .stats .stat:nth-child(3)::after { background: var(--violet-t); }
 .step-card { position: relative; overflow: hidden; }
 .step-card::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 6px; background: var(--band, var(--lagoon)); }
+
+/* Positioning update: tagline, learner/parent section, area tags */
+.tagline { font: 700 clamp(1.1rem, 2vw, 1.35rem) var(--font-head); color: var(--lagoon); margin: -6px 0 14px; letter-spacing: -.01em; }
+.who-card { display: flex; flex-direction: column; gap: 10px; }
+.who-card h3 { font-size: 1.4rem; margin: 6px 0 4px; }
+.who-card .ticks { flex: 1; }
+.who-learner { border-top: 6px solid var(--lagoon); }
+.who-parent { border-top: 6px solid #e0a400; }
+.area-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }

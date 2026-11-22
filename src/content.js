@@ -11,8 +11,8 @@ const TRACKS = {
     summary: 'Unplugged thinking, first block-style puzzles, and a gentle first look at AI. Lots of doing, little reading.',
     outcomes: ['Explain what a computer and an algorithm are, in their own words', 'Give clear step-by-step instructions', 'Tell the difference between AI and ordinary tools', 'Know what is private and when to ask an adult'],
     modules: [
-      { id: 'e1', title: 'Computers follow instructions', why: 'Every app and game starts with someone giving a computer clear steps. This is the foundation of coding.', lessons: ['e1-1', 'e1-2', 'e1-3'] },
-      { id: 'e2', title: 'Meet AI, safely', why: 'Children already use AI in apps and games. Knowing that it learns from examples, and can be wrong, makes them smarter users.', lessons: ['e2-1', 'e2-2', 'e2-3'] },
+      { id: 'e1', title: 'Computers follow instructions', areas: ['Computer Fundamentals', 'Coding & Programming'], why: 'Every app and game starts with someone giving a computer clear steps. This is the foundation of coding.', lessons: ['e1-1', 'e1-2', 'e1-3'] },
+      { id: 'e2', title: 'Meet AI, safely', areas: ['Artificial Intelligence', 'Digital Safety'], why: 'Children already use AI in apps and games. Knowing that it learns from examples, and can be wrong, makes them smarter users.', lessons: ['e2-1', 'e2-2', 'e2-3'] },
     ],
   },
   makers: {
@@ -20,8 +20,8 @@ const TRACKS = {
     summary: 'Loops, conditions and game design, then how machine learning works and how to write good prompts.',
     outcomes: ['Use loops and if/then logic to solve puzzles', 'Plan a simple game with rules and a goal', 'Explain how AI learns from data, and why that can create bias', 'Write clear prompts and check AI answers for mistakes'],
     modules: [
-      { id: 'm1', title: 'Think like a coder', why: 'Loops and conditions are the building blocks of every program. Planning a game turns them into something your child is proud of.', lessons: ['m1-1', 'm1-2', 'm1-3'] },
-      { id: 'm2', title: 'How AI learns', why: 'AI tools are trained on examples. Understanding that helps children use them well and question their answers.', lessons: ['m2-1', 'm2-2', 'm2-3'] },
+      { id: 'm1', title: 'Think like a coder', areas: ['Coding & Programming', 'Creative Technology'], why: 'Loops and conditions are the building blocks of every program. Planning a game turns them into something your child is proud of.', lessons: ['m1-1', 'm1-2', 'm1-3'] },
+      { id: 'm2', title: 'How AI learns', areas: ['Artificial Intelligence'], why: 'AI tools are trained on examples. Understanding that helps children use them well and question their answers.', lessons: ['m2-1', 'm2-2', 'm2-3'] },
     ],
   },
   creators: {
@@ -29,8 +29,8 @@ const TRACKS = {
     summary: 'Real HTML and CSS in the browser, how large language models work, prompt technique, and responsible AI.',
     outcomes: ['Build and style a web page with HTML and CSS', 'Explain how a large language model produces text', 'Write structured prompts and evaluate the output', 'Spot bias, misinformation and privacy risks in AI use'],
     modules: [
-      { id: 'c1', title: 'Build for the web', why: 'HTML and CSS are the real languages of the web. Building a page is the fastest way to go from user to creator.', lessons: ['c1-1', 'c1-2', 'c1-3'] },
-      { id: 'c2', title: 'AI: prompts and critical thinking', why: 'Teens will use AI for school and work. Using it well, and knowing its limits, is a career skill.', lessons: ['c2-1', 'c2-2', 'c2-3'] },
+      { id: 'c1', title: 'Build for the web', areas: ['Computer Fundamentals', 'Coding & Programming', 'Creative Technology'], why: 'HTML and CSS are the real languages of the web. Building a page is the fastest way to go from user to creator.', lessons: ['c1-1', 'c1-2', 'c1-3'] },
+      { id: 'c2', title: 'AI: prompts and critical thinking', areas: ['Artificial Intelligence', 'Digital Safety'], why: 'Teens will use AI for school and work. Using it well, and knowing its limits, is a career skill.', lessons: ['c2-1', 'c2-2', 'c2-3'] },
     ],
   },
 };
