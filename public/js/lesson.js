@@ -10,11 +10,44 @@
 
   let lesson, next, i = 0; const results = []; const flags = {};
 
+  const HINTS = {
+    read: 'Read one sentence at a time. Look for the bold words: they are the big ideas.',
+    quiz: 'Cross out the answer that seems least likely, then compare the two that are left.',
+    sort: 'Take one item at a time and ask the question at the top of the activity.',
+    order: 'Start by finding the very first step and the very last step. Then fill in the middle.',
+    grid: 'Trace the path with your finger first. Remember: turning does not move the kite.',
+    train: 'Label each picture honestly. Then look at which new pictures are different from your examples.',
+    prompt: 'Check for four parts: what to do, who it is for, what shape the answer takes, and one detail.',
+    spot: 'Ask of each sentence: could I check this? Is it rushing me or asking for something private?',
+    code: 'Change one small thing, look at the preview, then make the next change.',
+    project: 'Start with a rough list. You can improve it after your first idea is written down.',
+  };
+
+  function renderHelper(step) {
+    const box = root.querySelector('[data-helper]'); if (!box) return;
+    const out = box.querySelector('[data-help-out]');
+    const replies = {
+      hint: HINTS[step.type],
+      simple: `In short: ${lesson.summary}`,
+      why: lesson.why || 'Every small skill here helps you understand and create with technology.',
+      stuck: 'That\u2019s normal! Try again, take a short break, or ask a parent or tutor to look at it with you.',
+    };
+    out.textContent = '';
+    box.querySelectorAll('[data-help]').forEach((b) => {
+      b.setAttribute('aria-pressed', 'false');
+      b.onclick = () => {
+        box.querySelectorAll('[data-help]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        out.textContent = replies[b.dataset.help];
+      };
+    });
+  }
+
   function shell() {
     root.innerHTML = `<div class="wrap"><div class="lesson-shell band-${lesson.track}">
       ${taster ? '<div class="banner info"><p><b>Free sample lesson.</b> Progress isn’t saved. <a href="/start">Enrol</a> to unlock the full path.</p></div>' : ''}
       <div class="lesson-top"><div><h1 class="eyebrow" style="margin:0;font-family:var(--font)">${esc(lesson.title)}</h1></div><div class="step-dots" aria-hidden="true">${lesson.steps.map(() => '<i></i>').join('')}</div><span class="small muted" data-count></span></div>
       <section class="step-card" data-step tabindex="-1"></section>
+      <aside class="helper" data-helper aria-label="Lesson helper"><div class="helper-head"><b>Need a hand?</b><span class="small muted">Pre-written tips, not live AI</span></div><div class="helper-actions"><button type="button" data-help="hint" aria-pressed="false">Give me a hint</button><button type="button" data-help="simple" aria-pressed="false">Say it simply</button><button type="button" data-help="why" aria-pressed="false">Why does this matter?</button><button type="button" data-help="stuck" aria-pressed="false">I\u2019m stuck</button></div><p class="helper-out" data-help-out role="status"></p></aside>
       <div class="lesson-nav"><button class="btn btn-quiet" data-back>Back</button><button class="btn btn-primary" data-next disabled>Next</button></div>
     </div></div>`;
     root.querySelector('[data-back]').addEventListener('click', () => { if (i > 0) { i--; show(); } });
@@ -35,6 +68,7 @@
     } };
     if (results[i] && step.type !== 'read') { /* revisiting a finished step keeps Next enabled */ }
     window.Activities[step.type](card, step, ctx);
+    renderHelper(step);
     if (results[i]) nextBtn.disabled = false;
     card.focus({ preventScroll: true }); window.scrollTo({ top: 0 });
   }
@@ -46,13 +80,14 @@
     if (!taster) { try { badges = (await api(`/api/student/lessons/${lessonId}/complete`, { method: 'POST', body: { score, max: graded.length, ...flags } })).badges; } catch (e) { saveError = e.message; } }
     root.querySelectorAll('.step-dots i').forEach((d) => { d.className = 'on'; });
     nav.innerHTML = '';
+    root.querySelector('[data-helper]')?.remove();
     card.innerHTML = `<div class="done-screen"><div class="big" aria-hidden="true"><span>\u2605</span></div><h2>Lesson complete!</h2>
       ${graded.length ? `<p class="lead-sm">You got <b>${score} of ${graded.length}</b> checks right first time.</p>` : ''}
       ${saveError ? `<div class="feedback bad">We couldn’t save your progress: ${esc(saveError)} <button class="btn btn-quiet btn-sm" data-retry>Try again</button></div>` : ''}
       ${badges.length ? `<p><b>New badge${badges.length > 1 ? 's' : ''}!</b></p><div class="badges">${badges.map((b) => `<span class="badge"><span class="badge-medal">★</span><span>${esc(b.name)}<small>${esc(b.desc)}</small></span></span>`).join('')}</div>` : ''}
       ${taster ? `<p>That’s a taste of how ${'TinkerPath'} lessons work: short, hands-on, and always with a next step.</p><div class="palette" style="justify-content:center"><a class="btn btn-primary btn-lg" href="/start">Find your child’s path</a><a class="btn btn-quiet" href="/programmes">See all programmes</a></div>`
         : next ? `<p class="muted">Up next: <b>${esc(next.title)}</b></p><div class="palette" style="justify-content:center"><a class="btn btn-primary btn-lg" href="/learn/lesson/${next.id}">Next lesson</a><a class="btn btn-quiet" href="/learn">Back to my path</a></div>`
-        : '<p>You’ve reached the end of this path!</p><a class="btn btn-primary btn-lg" href="/learn">Back to my path</a>'}</div>`;
+        : '<p>That\u2019s the last lesson in this path. Check your path for any lessons you still want to finish.</p><a class="btn btn-primary btn-lg" href="/learn">Back to my path</a>'}</div>`;
     card.querySelector('[data-retry]')?.addEventListener('click', finish);
     card.focus();
   }

@@ -16,7 +16,7 @@ Children are growing up surrounded by technology and, increasingly, by artificia
 
 TinkerPath is an online technology education platform for ages 7–16. It brings together computer literacy, coding, artificial intelligence, creative technology and digital safety in one age-appropriate learning path. Lessons are short, visual and hands-on. A supervised AI companion helps children learn about AI safely, and parents see their child's progress in a dashboard.
 
-A working prototype already exists, with a public website, parent sign-up, student accounts, 18 interactive sample lessons, and a parent dashboard. Over the next two weeks, as part of HNG, we plan to turn it into a focused MVP: strengthening the curriculum, adding a controlled AI learning companion, and making progress tracking reliable.
+A working prototype already exists, with a public website, parent sign-up, student accounts, 27 interactive sample lessons, and a parent dashboard. Over the next two weeks, as part of HNG, we plan to turn it into a focused MVP: strengthening the curriculum, adding a controlled AI learning companion, and making progress tracking reliable.
 
 We are looking for developers, designers, educators and child-safety specialists to help build it.
 
@@ -117,15 +117,15 @@ Everything is delivered through **age-based learning paths** with a clear "next 
 
 ### Current sample curriculum — Available now
 
-18 lessons across the three age paths:
+27 lessons across the three age paths:
 
-| Path | Module 1 | Module 2 |
-|---|---|---|
-| Explorers (7–9) | Computers follow instructions | Meet AI, safely |
-| Makers (10–12) | Think like a coder | How AI learns |
-| Creators (13–16) | Build for the web | AI: prompts and critical thinking |
+| Path | Module 1 | Module 2 | Module 3 |
+|---|---|---|---|
+| Explorers (7–9) | Computers follow instructions | Meet AI, safely | My digital toolkit |
+| Makers (10–12) | Think like a coder | How AI learns | How your devices really work |
+| Creators (13–16) | Build for the web | AI: prompts and critical thinking | Digital skills and security |
 
-Coverage today is strongest in AI and coding. Computer Fundamentals, Creative Technology and Digital Safety each have one to three lessons; expanding them is part of the MVP.
+Every path now includes Computer Fundamentals and Digital Safety lessons. Creative Technology is the thinnest area, and all lessons still need review by an educator.
 
 ---
 
@@ -144,6 +144,7 @@ Coverage today is strongest in AI and coding. Computer Fundamentals, Creative Te
 | AI Lab: prompt-writing practice with instant feedback (pre-written example replies) | **Available now** |
 | Safety filters for personal information and unsuitable topics | **Available now** |
 | Free sample lesson without an account | **Available now** |
+| Guided lesson helper with pre-written hints and explanations (not live AI) | **Available now** |
 | Controlled AI learning companion that answers questions about the current lesson | **Planned (MVP)** |
 | Expanded curriculum for all five learning areas | **Planned (MVP)** |
 | Online payments (Paystack) | Built but untested; **not in MVP scope** |
@@ -192,6 +193,7 @@ Children learn **how AI works before they use it.** They train a model, see how 
 - Prompt-writing missions with instant feedback on four skills: task, audience, format and detail.
 - Example replies are **pre-written**, chosen by how clear the prompt is. No live AI service is connected, and the interface says so.
 - Safety filters already check every prompt before it is accepted.
+- A guided lesson helper offers pre-written hints and simple explanations. Children choose from buttons and cannot type into it.
 
 ### Planned for the MVP: AI learning companion
 
@@ -242,7 +244,7 @@ A helper inside lessons that can explain an idea again, give a hint, or answer a
 | 1 | Parent sign-up and child profile creation | Nickname, age group, interests; parent consent |
 | 2 | Student login | Learner name and PIN |
 | 3 | Age-based learning paths | Three paths; recommendation from onboarding answers |
-| 4 | Lessons in three core areas | Computer Fundamentals, Coding, AI: at least 2 lessons per area per age path (about 18 lessons; many already exist) |
+| 4 | Lessons in three core areas | Computer Fundamentals, Coding, AI: at least 2 lessons per area per age path (the prototype's 27 lessons cover much of this) |
 | 5 | Quizzes and practical activities | Reuse the existing activity types |
 | 6 | Controlled AI learning companion | Server-side, filtered, limited, logged; ages 10+ with parent opt-in |
 | 7 | Progress tracking | Lessons completed, scores, badges |
@@ -374,7 +376,7 @@ These are the outcomes we aim for and intend to measure. They are goals, not res
 - Public website: home, programmes, pricing, AI and safety, about, contact, draft policies.
 - Parent onboarding with a recommended path, email confirmation and a demo checkout.
 - Parent dashboard: progress, learning overview, AI activity log, PIN management, account settings.
-- Student login, dashboard, lesson player, 18 sample lessons, 10 activity types, badges and projects.
+- Student login, dashboard, lesson player, 27 sample lessons, 10 activity types, a guided helper, badges and projects.
 - AI Lab practice mode with safety filters.
 - Free sample lesson at [/try](https://tinkerpath.onrender.com/try).
 - Tested manually in the browser on desktop and phone screens.
@@ -386,13 +388,13 @@ These are the outcomes we aim for and intend to measure. They are goals, not res
 - Automated reminders and weekly progress emails: built, not tested end to end.
 
 **Not started**
-- AI learning companion inside lessons.
+- Live AI learning companion inside lessons.
 - Admin or content-management tools.
 - Live tutor sessions.
 - Automated tests.
 
 **Known limitations**
-- Curriculum depth is uneven: strongest in AI and coding.
+- The curriculum is still a sample: Creative Technology is thinnest, and lessons need educator review.
 - Demo data on the hosted version resets when the server restarts.
 - Policy pages are drafts awaiting legal review.
 - No real users, testimonials or partnerships yet.
@@ -404,7 +406,7 @@ These are the outcomes we aim for and intend to measure. They are goals, not res
 1. **Form the HNG team** and agree roles using section 16.
 2. **Confirm the MVP scope** in section 13 and set up the project board.
 3. **Agree the tech stack** (section 15) and the lesson content format.
-4. **Write the missing lessons** for Computer Fundamentals and expand Coding and AI.
+4. **Expand and review the lessons** across all five learning areas with an educator.
 5. **Build the AI learning companion** with the safety layer first, then the conversation features.
 6. **Test with a small group of parents and children** we know personally, with consent, and gather feedback.
 7. **Review child safety and data practices** with a specialist before any wider launch.

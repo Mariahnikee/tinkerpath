@@ -178,7 +178,7 @@ window.Activities = (() => {
       el.querySelectorAll('.sentence').forEach((b) => { const x = s.sentences[b.dataset.i]; const picked = b.getAttribute('aria-pressed') === 'true'; b.classList.remove('correct', 'wrong'); if (picked === x.wrong) right++; if (picked && x.wrong) b.classList.add('correct'); else if (picked !== x.wrong) b.classList.add('wrong'); });
       if (right === s.sentences.length) {
         el.querySelectorAll('.sentence').forEach((b) => { const x = s.sentences[b.dataset.i]; b.dataset.locked = '1'; if (x.wrong) b.insertAdjacentHTML('beforeend', `<span class="fix">${esc(x.fix)}</span>`); });
-        ev.target.remove(); fb(el, 'ok', '<b>Sharp eyes!</b> You found every problem. AI can sound sure and still be wrong.'); ctx.complete({ correct: tries === 1, perfectSpot: tries === 1 });
+        ev.target.remove(); fb(el, 'ok', `<b>Sharp eyes!</b> ${esc(s.success || 'You found every problem. AI can sound sure and still be wrong.')}`); ctx.complete({ correct: tries === 1, perfectSpot: tries === 1 });
       } else { fb(el, 'bad', 'Not quite. Red means that choice needs another look. Think: which facts could you check in a textbook?'); if (tries >= 3) ctx.complete({ correct: false }); }
     });
   }

@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><title>TinkerPath — Developer Brief</title></head><body style="font-family:Arial,sans-serif;max-width:800px;margin:20px auto"><h1>TinkerPath — Developer Brief</h1>
+<p><strong>Understand it. Use it. Create with it.</strong></p>
+<h2>What is TinkerPath?</h2>
+<p>A technology education platform for children aged 7–16. Kids learn computer fundamentals, coding, AI, creative technology and digital safety through short, interactive lessons. A supervised AI helper supports their learning, and parents see their progress in a dashboard.</p>
+<ul><li><strong>Live prototype:</strong> https://tinkerpath.onrender.com</li><li><strong>Repo:</strong> https://github.com/Mariahnikee/tinkerpath</li></ul>
+<h2>What we're building in two weeks (HNG MVP)</h2>
+<p>A working end-to-end product:</p>
+<ol><li><strong>Parent sign-up</strong> and child profiles (nickname and age group only)</li><li><strong>Student login</strong> with a learner name and PIN (no child email)</li><li><strong>Learning paths</strong> for three age groups: 7–9, 10–12 and 13–16</li><li><strong>Lessons</strong> in Computer Fundamentals, Coding and AI, with quizzes and interactive activities</li><li><strong>AI learning companion:</strong> answers questions about the current lesson, inside strict safety limits</li><li><strong>Progress tracking:</strong> lessons completed, scores, badges</li><li><strong>Parent dashboard:</strong> progress plus a log of every AI conversation</li></ol>
+<p><strong>Out of scope:</strong> payments, live classes, mobile apps.</p>
+<h2>What already exists</h2>
+<p>The prototype already works end to end. It has a marketing site, onboarding, student and parent dashboards, a lesson player with 10 activity types, 27 sample lessons, a guided lesson helper, and AI safety filters. We'll reuse its <strong>lesson content, activity designs and visual style</strong> as the starting point.</p>
+<p>Prototype stack: Node.js (no frameworks), SQLite, plain HTML/CSS/JS.</p>
+<h2>Proposed MVP stack</h2>
+<table style="border-collapse:collapse;width:100%"><tr><th style="border:1px solid #bbb;padding:6px 8px;vertical-align:top" align="left"><strong>Layer</strong></th><th style="border:1px solid #bbb;padding:6px 8px;vertical-align:top" align="left"><strong>Choice</strong></th></tr><tr><td style="border:1px solid #bbb;padding:6px 8px;vertical-align:top">Frontend</td><td style="border:1px solid #bbb;padding:6px 8px;vertical-align:top">React / Next.js</td></tr><tr><td style="border:1px solid #bbb;padding:6px 8px;vertical-align:top">Backend</td><td style="border:1px solid #bbb;padding:6px 8px;vertical-align:top">Node.js (Express or NestJS) or Python (FastAPI or Django), REST API</td></tr><tr><td style="border:1px solid #bbb;padding:6px 8px;vertical-align:top">Database</td><td style="border:1px solid #bbb;padding:6px 8px;vertical-align:top">PostgreSQL</td></tr><tr><td style="border:1px solid #bbb;padding:6px 8px;vertical-align:top">AI</td><td style="border:1px solid #bbb;padding:6px 8px;vertical-align:top">Hosted LLM API, called <strong>only</strong> from the backend</td></tr><tr><td style="border:1px solid #bbb;padding:6px 8px;vertical-align:top">Hosting</td><td style="border:1px solid #bbb;padding:6px 8px;vertical-align:top">Render, Railway or Vercel</td></tr></table>
+<p>Final choices will be agreed with the team on day 1.</p>
+<h2>Where you fit</h2>
+<p><strong>Frontend</strong></p>
+<ul><li>Student dashboard, lesson player and interactive activities (quizzes, sorting, coding puzzles, a live HTML editor)</li><li>Parent dashboard and onboarding flow</li><li>Mobile-friendly and accessible UI</li></ul>
+<p><strong>Backend</strong></p>
+<ul><li>Auth for parents (email and password) and students (learner name and PIN)</li><li>Data model for users, children, lessons and progress, plus the API for them</li><li>Rate limiting, logging and deployment</li></ul>
+<p><strong>AI/ML</strong></p>
+<ul><li>The AI companion: prompts, lesson context, fallback mode when AI is off</li><li>Safety layer: personal-information and topic filters on input and output, daily limits</li><li>Testing the filters with unsafe prompts</li></ul>
+<h2>Non-negotiables (child safety)</h2>
+<ul><li><strong>No identifying child data:</strong> no surname, birth date, school, photo or email.</li><li><strong>AI keys stay on the server.</strong> Children never get direct access to a general-purpose chatbot.</li><li><strong>Every AI message is filtered and logged</strong> where the parent can see it.</li><li><strong>Live AI is for ages 10+ only,</strong> and only when a parent turns it on.</li><li><strong>Keep it simple:</strong> no unnecessary dependencies; ship working features over clever ones.</li></ul>
+<h2>Timeline</h2>
+<ul><li><strong>Week 1:</strong> setup, auth and profiles, learning paths, lesson player, lesson content</li><li><strong>Week 2:</strong> AI companion and safety layer, parent dashboard, testing, deploy, demo</li></ul>
+<h2>Run the prototype locally</h2>
+<p>Requires Node.js 22.13 or later. No install step.</p>
+<pre style="font-family:Courier New,monospace;background:#f3f3f3;padding:8px">git clone https://github.com/Mariahnikee/tinkerpath.git
+cd tinkerpath
+npm start</pre>
+<p>Open http://localhost:3000. Everything runs in demo mode: no real payments, and emails appear at <code>/dev/outbox</code>.</p>
+<h2>Want to join?</h2>
+<p>Send a short message with your role (frontend, backend or AI/ML), your experience, and a GitHub profile or portfolio to <strong>[add contact email or HNG channel]</strong>.</p>
+<p>For the full product picture, see <code>TINKERPATH_PRODUCT_BRIEF.md</code> in the repo.</p></body></html>

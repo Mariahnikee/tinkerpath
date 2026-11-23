@@ -1,6 +1,6 @@
 'use strict';
 /*
- * Sample curriculum: 3 age bands x 2 modules x 3 lessons = 18 lessons.
+ * Sample curriculum: 3 age bands x 3 modules x 3 lessons = 27 lessons.
  * Each lesson is 10-15 minutes and mixes short reading, an interactive activity and a quiz.
  * Step types: read, quiz, sort, order, grid, train, prompt, spot, code, project.
  */
@@ -13,6 +13,7 @@ const TRACKS = {
     modules: [
       { id: 'e1', title: 'Computers follow instructions', areas: ['Computer Fundamentals', 'Coding & Programming'], why: 'Every app and game starts with someone giving a computer clear steps. This is the foundation of coding.', lessons: ['e1-1', 'e1-2', 'e1-3'] },
       { id: 'e2', title: 'Meet AI, safely', areas: ['Artificial Intelligence', 'Digital Safety'], why: 'Children already use AI in apps and games. Knowing that it learns from examples, and can be wrong, makes them smarter users.', lessons: ['e2-1', 'e2-2', 'e2-3'] },
+      { id: 'e3', title: 'My digital toolkit', areas: ['Computer Fundamentals', 'Digital Safety'], why: 'Knowing the parts of a computer, how files work and what the internet is gives children confidence with every device they use.', lessons: ['e3-1', 'e3-2', 'e3-3'] },
     ],
   },
   makers: {
@@ -22,6 +23,7 @@ const TRACKS = {
     modules: [
       { id: 'm1', title: 'Think like a coder', areas: ['Coding & Programming', 'Creative Technology'], why: 'Loops and conditions are the building blocks of every program. Planning a game turns them into something your child is proud of.', lessons: ['m1-1', 'm1-2', 'm1-3'] },
       { id: 'm2', title: 'How AI learns', areas: ['Artificial Intelligence'], why: 'AI tools are trained on examples. Understanding that helps children use them well and question their answers.', lessons: ['m2-1', 'm2-2', 'm2-3'] },
+      { id: 'm3', title: 'How your devices really work', areas: ['Computer Fundamentals', 'Digital Safety'], why: 'Understanding operating systems and the internet helps children solve everyday tech problems and recognise online scams.', lessons: ['m3-1', 'm3-2', 'm3-3'] },
     ],
   },
   creators: {
@@ -31,6 +33,7 @@ const TRACKS = {
     modules: [
       { id: 'c1', title: 'Build for the web', areas: ['Computer Fundamentals', 'Coding & Programming', 'Creative Technology'], why: 'HTML and CSS are the real languages of the web. Building a page is the fastest way to go from user to creator.', lessons: ['c1-1', 'c1-2', 'c1-3'] },
       { id: 'c2', title: 'AI: prompts and critical thinking', areas: ['Artificial Intelligence', 'Digital Safety'], why: 'Teens will use AI for school and work. Using it well, and knowing its limits, is a career skill.', lessons: ['c2-1', 'c2-2', 'c2-3'] },
+      { id: 'c3', title: 'Digital skills and security', areas: ['Computer Fundamentals', 'Digital Safety'], why: 'Research, productivity tools and account security are practical skills teens will use for school, work and life.', lessons: ['c3-1', 'c3-2', 'c3-3'] },
     ],
   },
 };
@@ -216,7 +219,88 @@ const LESSONS = [
         { text: 'Asking AI to explain a topic, then checking it in your textbook', bucket: 0 }, { text: 'Submitting an AI-written essay as your own', bucket: 1 }, { text: 'Uploading a friend’s photo to an AI app without asking', bucket: 1 }, { text: 'Using AI to brainstorm ideas, then choosing your own', bucket: 0 } ] },
       { type: 'project', title: 'AI rules for my family', brief: 'Write 4 rules your family could follow for using AI tools safely and honestly.', placeholder: '1. ...\n2. ...\n3. ...\n4. ...' },
     ] },
+
+  // ---------------- DIGITAL FOUNDATIONS ----------------
+  { id: 'e3-1', track: 'explorers', module: 'e3', title: 'Parts of a computer', minutes: 10,
+    summary: 'Find out which parts take information in and which parts give it back.',
+    steps: [
+      { type: 'read', visual: 'devices', title: 'In and out', body: ['**Input** devices put information into a computer. A keyboard and a mouse are inputs.', '**Output** devices show or play the result. A screen and a speaker are outputs.'] },
+      { type: 'sort', title: 'Input or output?', prompt: 'What does each part do?', buckets: ['Input', 'Output'], items: [
+        { text: 'Keyboard', bucket: 0 }, { text: 'Screen', bucket: 1 }, { text: 'Mouse', bucket: 0 }, { text: 'Speaker', bucket: 1 }, { text: 'Microphone', bucket: 0 }, { text: 'Printer', bucket: 1 } ] },
+      { type: 'quiz', question: 'You type your name and it appears on the screen. Which part was the output?', options: ['The keyboard', 'The screen', 'Your fingers'], answer: 1, explain: 'The keyboard sent the letters in. The screen showed them back to you.' },
+    ] },
+  { id: 'e3-2', track: 'explorers', module: 'e3', title: 'Files and folders', minutes: 10,
+    summary: 'Save your work and find it again.',
+    steps: [
+      { type: 'read', visual: 'recipe', title: 'A tidy computer', body: ['A **file** is one piece of saved work, like a drawing or a story.', 'A **folder** holds files together, like a school bag holds your books. Good names make files easy to find.'] },
+      { type: 'order', title: 'Save a drawing', prompt: 'Put the steps in order.', items: ['Open the drawing app', 'Draw your picture', 'Press Save', 'Give the file a clear name', 'Find it later in your folder'] },
+      { type: 'quiz', question: 'Which file name is easiest to find later?', options: ['abc123', 'my-rainy-day-drawing', 'file'], answer: 1, explain: 'A clear name tells you what is inside before you open it.' },
+    ] },
+  { id: 'e3-3', track: 'explorers', module: 'e3', title: 'What is the internet?', minutes: 12, badge: 'safety-star',
+    summary: 'Learn how computers around the world connect, and how to stay careful.',
+    steps: [
+      { type: 'read', visual: 'web', title: 'A giant network', body: ['The **internet** connects computers all around the world so they can share information.', 'Not everything online is true or kind. If something looks strange or asks for private details, **stop and ask a trusted adult**.'] },
+      { type: 'order', title: 'Send a message', prompt: 'How does a message reach someone?', items: ['You write a message', 'You press Send', 'It travels across the internet', 'The other device receives it', 'Your friend reads it'] },
+      { type: 'quiz', question: 'A pop-up says "You won a prize! Click here!" What should you do?', options: ['Click it quickly', 'Don\u2019t click, and tell a trusted adult', 'Type in your address'], answer: 1, explain: 'Surprise prizes are a common trick. A trusted adult can help you check.' },
+    ] },
+  { id: 'm3-1', track: 'makers', module: 'm3', title: 'Meet the operating system', minutes: 12,
+    summary: 'Discover the software that runs everything else on a device.',
+    steps: [
+      { type: 'read', visual: 'devices', title: 'The manager of your device', body: ['An **operating system (OS)** manages a device: its memory, files, screen and apps.', 'Windows, macOS, Linux, Android and iOS are operating systems. **Apps** are programs that run on top of them.'] },
+      { type: 'sort', title: 'OS or app?', prompt: 'Which is each one?', buckets: ['Operating system', 'App'], items: [
+        { text: 'Android', bucket: 0 }, { text: 'A calculator', bucket: 1 }, { text: 'Windows', bucket: 0 }, { text: 'A web browser', bucket: 1 }, { text: 'iOS', bucket: 0 }, { text: 'A drawing program', bucket: 1 } ] },
+      { type: 'quiz', question: 'What happens when you open a game on a phone?', options: ['The OS starts it and gives it memory', 'The game replaces the OS', 'The screen runs it alone'], answer: 0, explain: 'The operating system starts apps and shares the device\u2019s resources between them.' },
+    ] },
+  { id: 'm3-2', track: 'makers', module: 'm3', title: 'How the internet works', minutes: 12,
+    summary: 'Follow a web page from a server to your screen.',
+    steps: [
+      { type: 'read', visual: 'web', title: 'Packets on a journey', body: ['Information online is split into small pieces called **packets**. They travel through networks and are put back together at the other end.', 'A **browser** is the app you use to view websites. The **internet** is the network underneath it.'] },
+      { type: 'order', title: 'Loading a web page', prompt: 'Put the journey in order.', items: ['You enter a web address', 'Your device asks for the page', 'A server sends the page in packets', 'Packets travel across networks', 'Your browser rebuilds and shows the page'] },
+      { type: 'quiz', question: 'Which one is a web browser?', options: ['Chrome', 'The internet', 'A Wi-Fi router'], answer: 0, explain: 'Chrome is a browser. The internet is the network, and a router connects your home to it.' },
+    ] },
+  { id: 'm3-3', track: 'makers', module: 'm3', title: 'Spot the scam', minutes: 12, badge: 'safety-star',
+    summary: 'Recognise tricks that try to steal accounts or personal details.',
+    steps: [
+      { type: 'read', visual: 'shield', title: 'Don\u2019t take the bait', body: ['**Phishing** is when someone pretends to be a trusted person or company to trick you.', 'Warning signs: a prize you did not enter, **rushing you**, strange links, or asking for a password.'] },
+      { type: 'spot', title: 'Find the warning signs', prompt: 'A message arrived in a game chat. Tap every suspicious sentence.', success: 'You found every warning sign. Scams work by rushing people, so stopping to think protects you.', sentences: [
+        { text: 'Our game will add a new level next month.', wrong: false },
+        { text: 'Congratulations! You have won a free phone.', wrong: true, fix: 'A prize you never entered for is a classic trick.' },
+        { text: 'Click this link in the next 5 minutes or lose it.', wrong: true, fix: 'Scammers rush you so you do not stop to think.' },
+        { text: 'Send us your password to confirm your account.', wrong: true, fix: 'Real companies should never ask you to send your password.' } ] },
+      { type: 'quiz', question: 'What is the best thing to do with that message?', options: ['Reply and ask if it is real', 'Don\u2019t click, then show a trusted adult and report it', 'Send it to your friends'], answer: 1, explain: 'Not engaging keeps you safe, and reporting helps protect others.' },
+    ] },
+  { id: 'c3-1', track: 'creators', module: 'c3', title: 'Search smarter, check sources', minutes: 12,
+    summary: 'Find reliable information and judge what you read.',
+    steps: [
+      { type: 'read', visual: 'check', title: 'Not every result is reliable', body: ['Good research asks: **Who wrote this? When? What is their evidence? Why did they publish it?**', 'Compare at least two independent sources before you trust an important claim.'] },
+      { type: 'sort', title: 'Trust signal or red flag?', prompt: 'How should each one affect your trust?', buckets: ['Trust signal', 'Red flag'], items: [
+        { text: 'Named author with relevant expertise', bucket: 0 }, { text: 'Headline written to shock you', bucket: 1 }, { text: 'Links to original evidence', bucket: 0 }, { text: 'No date or author anywhere', bucket: 1 }, { text: 'Confirmed by another independent source', bucket: 0 }, { text: 'Page pushes you to buy something', bucket: 1 } ] },
+      { type: 'quiz', question: 'A viral post makes a surprising health claim. What should you do first?', options: ['Share it to warn people', 'Check it with reliable health sources', 'Trust it if it has many likes'], answer: 1, explain: 'Popularity is not evidence. Check before you believe or share.' },
+    ] },
+  { id: 'c3-2', track: 'creators', module: 'c3', title: 'Spreadsheets for real life', minutes: 15, badge: 'builder',
+    summary: 'Use formulas to plan a budget and pick the right tool.',
+    steps: [
+      { type: 'read', visual: 'code', title: 'Let the sheet do the maths', body: ['A spreadsheet stores data in **cells**, named by column and row, like `B2`.', 'A **formula** starts with `=`. For example, `=SUM(B2:B4)` adds cells B2, B3 and B4.'] },
+      { type: 'quiz', question: 'B2 is 500, B3 is 200 and B4 is 300. What does =SUM(B2:B4) show?', options: ['500', '1000', 'B2:B4'], answer: 1, explain: '500 + 200 + 300 = 1000.' },
+      { type: 'sort', title: 'Choose the tool', prompt: 'Which tool fits each job best?', buckets: ['Spreadsheet', 'Document'], items: [
+        { text: 'Tracking pocket money each week', bucket: 0 }, { text: 'Writing a book report', bucket: 1 }, { text: 'Calculating a class trip budget', bucket: 0 }, { text: 'Drafting a formal letter', bucket: 1 } ] },
+      { type: 'project', title: 'Plan a mini budget', brief: 'Plan a small event with a budget. List 4 items with costs, then write the formula you would use for the total.', placeholder: 'Snacks: 2000\nDrinks: 1500\n...\nTotal formula: =SUM(...)' },
+    ] },
+  { id: 'c3-3', track: 'creators', module: 'c3', title: 'Protect your accounts', minutes: 12, badge: 'safety-star',
+    summary: 'Use strong passwords, two-step verification and safe habits.',
+    steps: [
+      { type: 'read', visual: 'shield', title: 'Your accounts are worth protecting', body: ['Use a **long, unique password** for every important account. A password manager can remember them.', '**Two-step verification (2FA)** adds a second check, so a stolen password alone is not enough. Never share the code.'] },
+      { type: 'sort', title: 'Safe or risky?', prompt: 'Sort each habit.', buckets: ['Safe', 'Risky'], items: [
+        { text: 'A different password for each account', bucket: 0 }, { text: 'Using your birthday as a password', bucket: 1 }, { text: 'Turning on two-step verification', bucket: 0 }, { text: 'Sharing a login code with a "support agent"', bucket: 1 }, { text: 'Installing updates when they are available', bucket: 0 }, { text: 'Logging in through a link from a stranger', bucket: 1 } ] },
+      { type: 'quiz', question: 'Someone messages you asking for the 6-digit code you just received. What do you do?', options: ['Send it if they sound official', 'Never share it, and secure your account', 'Post it publicly'], answer: 1, explain: 'That code unlocks your account. Anyone asking for it is a major warning sign.' },
+    ] },
 ];
+
+// Give every lesson its module's plain-language reason, used by the lesson helper.
+for (const t of Object.values(TRACKS)) for (const m of t.modules) for (const id of m.lessons) {
+  const lesson = LESSONS.find((l) => l.id === id);
+  if (lesson) lesson.why = m.why;
+}
 
 const LESSON_MAP = Object.fromEntries(LESSONS.map((l) => [l.id, l]));
 

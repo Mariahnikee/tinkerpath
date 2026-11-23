@@ -569,3 +569,13 @@ body.student { background: #fdf8ef; }
 .who-learner { border-top: 6px solid var(--lagoon); }
 .who-parent { border-top: 6px solid #e0a400; }
 .area-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
+
+/* Guided lesson helper */
+.helper { margin-top: 16px; padding: 16px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.helper-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.helper-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.helper-actions button { min-height: 40px; padding: 7px 14px; border: 1.5px solid var(--line); border-radius: 999px; background: #fff; color: var(--ink); font: 700 .88rem var(--font); cursor: pointer; }
+.helper-actions button:hover { border-color: var(--ink); }
+.helper-actions button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+.helper-out { margin: 12px 0 0; padding: 12px 14px; border-radius: 12px; background: var(--lagoon-t); }
+.helper-out:empty { display: none; }

@@ -21,8 +21,8 @@ Internal working notes to accompany `TINKERPATH_PRODUCT_BRIEF.md`: website audit
 | Learning areas on the site didn't match the five official areas | Inconsistent story between website and pitch | **Yes**: five areas plus critical thinking |
 | Student and parent experiences only implied | Visitors had to infer what each user gets | **Yes**: new "For learners / For parents" section |
 | Programmes page didn't show which learning area each module covers | Harder to see the breadth of the curriculum | **Yes**: learning-area tags on modules |
-| Computer Fundamentals has very little content (1–2 lessons) | Weakest area against the vision | No: MVP content work |
-| No AI learning companion inside lessons (only the prompt-practice AI Lab) | Key vision feature missing | No: MVP feature |
+| Computer Fundamentals had very little content | Weakest area against the vision | **Yes**: a new module in every age path |
+| No live AI learning companion inside lessons | Key vision feature missing | **Partly**: guided helper with pre-written tips; live AI remains an MVP feature |
 | Hosted site has demo mode switched off | New parents can't confirm their email or enrol on the live site | **Needs one step in Render** (see below) |
 | Contact form emails go to a placeholder address and aren't delivered | Collaborator messages would be lost | No: set a real support email before sharing widely |
 | Policy pages are drafts | Not ready for real customers | No: legal review |
@@ -42,6 +42,8 @@ Messaging only. No redesign, no features removed.
 3. **New "For learners / For parents" section** on the homepage, stating what each user gets.
 4. **Programmes page:** learning-area tags on each module, and an intro listing the five areas.
 5. **Page description and footer** updated to the broader positioning.
+6. **Nine new lessons:** a Computer Fundamentals and Digital Safety module in each age path.
+7. **Guided lesson helper:** hint, simple explanation and "why it matters" buttons using pre-written tips, with no free typing and no live AI.
 
 ---
 
@@ -54,7 +56,7 @@ Ten working days. Assumes a small team with frontend, backend, AI, design and co
 | Day | Product and design | Frontend | Backend | AI | Content |
 |---|---|---|---|---|---|
 | 1 | Confirm scope, user stories, success criteria | Project setup, design tokens from prototype | Repo, database schema, API outline | Choose AI provider, define safety rules | Agree lesson format and template |
-| 2 | Wireframes for key screens | Layout, navigation, auth screens | Parent auth, child profiles, student PIN login | Draft companion instructions and filter lists | Map existing 18 lessons to areas; list gaps |
+| 2 | Wireframes for key screens | Layout, navigation, auth screens | Parent auth, child profiles, student PIN login | Draft companion instructions and filter lists | Map existing 27 lessons to areas; list gaps |
 | 3 | Review onboarding flow | Onboarding and recommendation | Learning paths and lessons API | Build safety layer (filters, limits, logging) | Write Computer Fundamentals lessons |
 | 4 | Usability check with 2–3 people | Lesson player and quiz | Progress tracking API | Connect AI service behind the safety layer | Write Coding lessons |
 | 5 | Mid-point review and demo | Activities (reuse prototype designs) | Seed content and demo accounts | Test filters with safe and unsafe prompts | Write AI lessons |
